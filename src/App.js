@@ -1,13 +1,14 @@
-import React from 'react';
-
+import Product from "./components/product/Product";
 
 const App = () => {
     return (
         <div className="container" id="title">
-            <h1>shopping app</h1>
-            <p>product #1 : book 1</p>
+            <h1>shopping App</h1>
+            <Product />
+            <Product />
+            <Product />
         </div>
-    )
+    );
 };
 
 export default App;
