@@ -1,5 +1,6 @@
 import react  from "react";
-import ClassCounter from "./components/ClassCounter";
+import HookObject from "./components/HookObject";
+// import ClassCounter from "./components/ClassCounter";
 // import HookCounter from "./components/HookCounter";
 // import Product from "./components/product/Product";
 // import { useState } from "react";
@@ -8,7 +9,11 @@ import ClassCounter from "./components/ClassCounter";
 const App = () => {
   return ( 
     <div className="App">
-      <ClassCounter/>
+      <HookObject/>
+      {/* <ClassCounter/> */}
+      {/* <HookCounter/> */}
+      
+      
     </div>
    );
 }
