@@ -1,6 +1,20 @@
-import react from "react";
-import Product from "./components/product/Product";
-import { useState } from "react";
+import react  from "react";
+import HookCounter from "./components/HookCounter";
+// import Product from "./components/product/Product";
+// import { useState } from "react";
+
+
+const App = () => {
+  return ( 
+    <div className="App">
+      <HookCounter/>
+    </div>
+   );
+}
+ 
+export default App;
+
+
 
 // class App extends react.Component {
 //   state = {
@@ -34,30 +48,31 @@ import { useState } from "react";
 //   }
 // }
 
-const App = () => {
-  const [products, setProducts] = useState([
-     { title:"React.js", price:"99 $" },
-     { title:"Node.js", price:"89 $" },
-     { title:"JavaScript", price:"79 $" },
-  ]);
 
-  const clickhandler = () => {
-    setProducts([
-      { title:"React.js", price:"89 $" },
-      { title:"Node.js", price:"79 $" },
-      { title:"JavaScript", price:"69 $" },
-   ])
-};
+// const App = () => {
+//   const [products, setProducts] = useState([
+//      { title:"React.js", price:"99 $" },
+//      { title:"Node.js", price:"89 $" },
+//      { title:"JavaScript", price:"79 $" },
+//   ]);
 
-  return ( 
-    <div className="container" id="title">
-          <h1>shopping App</h1>
-          {products.map((product) => {
-           return <Product name={product.title} price={product.price} />;
-          })}
-          <button onClick={clickhandler}>change price</button>
-    </div>
-   );
-}
+//   const clickhandler = () => {
+//     setProducts([
+//       { title:"React.js", price:"89 $" },
+//       { title:"Node.js", price:"79 $" },
+//       { title:"JavaScript", price:"69 $" },
+//    ])
+// };
+
+//   return ( 
+//     <div className="container" id="title">
+//           <h1>shopping App</h1>
+//           {products.map((product) => {
+//            return <Product name={product.title} price={product.price} />;
+//           })}
+//           <button onClick={clickhandler}>change price</button>
+//     </div>
+//    );
+// }
  
-export default App;
+// export default App;
