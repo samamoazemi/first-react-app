@@ -1,5 +1,6 @@
 import react  from "react";
-import HookObject from "./components/HookObject";
+import HookArray from "./components/HookArray";
+// import HookObject from "./components/HookObject";
 // import ClassCounter from "./components/ClassCounter";
 // import HookCounter from "./components/HookCounter";
 // import Product from "./components/product/Product";
@@ -9,11 +10,10 @@ import HookObject from "./components/HookObject";
 const App = () => {
   return ( 
     <div className="App">
-      <HookObject/>
+      <HookArray/>
+      {/* <HookObject/> */}
       {/* <ClassCounter/> */}
       {/* <HookCounter/> */}
-      
-      
     </div>
    );
 }
