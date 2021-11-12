@@ -1,84 +1,40 @@
 import react  from "react";
-import HookArray from "./components/HookArray";
-// import HookObject from "./components/HookObject";
-// import ClassCounter from "./components/ClassCounter";
-// import HookCounter from "./components/HookCounter";
-// import Product from "./components/product/Product";
-// import { useState } from "react";
+import Product from "./components/product/Product";
+import { useState } from "react";
+import "./App.css";
 
 
-const App = () => {
-  return ( 
-    <div className="App">
-      <HookArray/>
-      {/* <HookObject/> */}
-      {/* <ClassCounter/> */}
-      {/* <HookCounter/> */}
-    </div>
-   );
+class App extends react.Component {
+  state = {
+    products: [
+       { title:"React.js", price:"99 $", id:1 },
+       { title:"Node.js", price:"89 $", id:2 },
+       { title:"JavaScript", price:"79 $", id:3 },
+    ]
+  }
+
+clickhandler = () => {
+  this.setState({
+    products: [
+       { title:"React.js", price:"89 $" },
+       { title:"Node.js", price:"79 $" },
+       { title:"JavaScript", price:"69 $" },
+    ]
+  })
 }
- 
+
+  render(){
+    return(
+      <div className="container" id="title">
+         <h1>shopping App</h1>
+         {this.state.products.map((product) => {
+           return(
+            <Product name={product.title} price={product.price} key={product.id}/>
+           )
+         })}
+         <button onClick={this.clickhandler}>change price</button>
+       </div>
+    )
+  }
+}
 export default App;
-
-
-
-// class App extends react.Component {
-//   state = {
-//     products: [
-//        { title:"React.js", price:"99 $" },
-//        { title:"Node.js", price:"89 $" },
-//        { title:"JavaScript", price:"79 $" },
-//     ],
-//   };
-
-// clickhandler = () => {
-//   this.setState({
-//     products: [
-//        { title:"React.js", price:"89 $" },
-//        { title:"Node.js", price:"79 $" },
-//        { title:"JavaScript", price:"69 $" },
-//     ],
-//   })
-// }
-
-//   render(){
-//     return(
-//       <div className="container" id="title">
-//          <h1>shopping App</h1>
-//          {this.state.products.map((product) => {
-//            return <Product name={product.title} price={product.price} />;
-//          })}
-//          <button onClick={this.clickhandler}>change price</button>
-//        </div>
-//     );
-//   }
-// }
-
-
-// const App = () => {
-//   const [products, setProducts] = useState([
-//      { title:"React.js", price:"99 $" },
-//      { title:"Node.js", price:"89 $" },
-//      { title:"JavaScript", price:"79 $" },
-//   ]);
-
-//   const clickhandler = () => {
-//     setProducts([
-//       { title:"React.js", price:"89 $" },
-//       { title:"Node.js", price:"79 $" },
-//       { title:"JavaScript", price:"69 $" },
-//    ])
-// };
-
-//   return ( 
-//     <div className="container" id="title">
-//           <h1>shopping App</h1>
-//           {products.map((product) => {
-//            return <Product name={product.title} price={product.price} />;
-//           })}
-//           <button onClick={clickhandler}>change price</button>
-//     </div>
-//    );
-// }
- 
-// export default App;
