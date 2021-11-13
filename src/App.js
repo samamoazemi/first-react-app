@@ -45,7 +45,7 @@ countHandler = (id) => {
             <Product name={product.title} price={product.price} key={product.id}/>
            )
          })}
-         <button onClick={this.countHandler.bind(this, 2)} className="product">
+         <button onClick={ () => this.countHandler(2)} className="product">
            counter : {this.state.count}
            </button>
        </div>
