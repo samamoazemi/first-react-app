@@ -14,12 +14,13 @@ class App extends react.Component {
     count : 0 ,
   }
 
-clickhandler = () => {
+clickhandler = (newTitle) => {
+  console.log("change price")
   this.setState({
     products: [
-       { title:"React.js", price:"89 $" },
-       { title:"Node.js", price:"79 $" },
-       { title:"JavaScript", price:"69 $" },
+       { title:"React.js", price:"89 $", id:1},
+       { title: newTitle, price:"79 $", id:2},
+       { title:"JavaScript", price:"69 $", id:3},
     ]
   })
 }
@@ -42,7 +43,12 @@ countHandler = (id) => {
          <h1>shopping App</h1>
          {this.state.products.map((product) => {
            return(
-            <Product name={product.title} price={product.price} key={product.id}/>
+            <Product 
+            name={product.title} 
+            price={product.price} 
+            key={product.id} 
+            click={ () => this.clickhandler("new title")} 
+            />
            )
          })}
          <button onClick={ () => this.countHandler(2)} className="product">
