@@ -10,10 +10,8 @@ class App extends react.Component {
        { title:"React.js", price:"99 $", id:1 },
        { title:"Node.js", price:"89 $", id:2 },
        { title:"JavaScript", price:"79 $", id:3 },
-    ],
-
-   count : 0 ,
-
+      ],
+    count : 0 ,
   }
 
 clickhandler = () => {
@@ -26,18 +24,17 @@ clickhandler = () => {
   })
 }
 
+// // constructor(props){
+// //   super(props);
+// //   this.countHandler = this.countHandler.bind(this);
+//   // console.log("constructor", this);
 
-constructor(props){
-  super(props);
-  this.countHandler = this.countHandler.bind(this);
-  // console.log("constructor", this);
+// }
 
-}
-countHandler(){
-  // console.log("count clicked", this)
+countHandler = (id) => {
+  console.log("count clicked", id)
   this.setState({ count: this.state.count + 1 });
 }
-
 
   render(){
     return(
@@ -48,7 +45,9 @@ countHandler(){
             <Product name={product.title} price={product.price} key={product.id}/>
            )
          })}
-         <button onClick={this.countHandler}>change price</button>
+         <button onClick={this.countHandler.bind(this, 2)} className="product">
+           counter : {this.state.count}
+           </button>
        </div>
     )
   }
