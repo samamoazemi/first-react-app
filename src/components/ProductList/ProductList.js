@@ -16,12 +16,7 @@ class ProductList extends React.Component {
             <div>
             {this.state.products.map((product) => {
            return(
-            <Product 
-            name={product.title} 
-            price={product.price} 
-            key={product.id} 
-            click={ () => this.clickhandler("new title")} 
-            />
+            <Product name={product.title} price={product.price} key={product.id}  />
            )
          })}
         </div>

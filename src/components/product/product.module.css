@@ -2,4 +2,8 @@
     border: 1px solid #ccc;
     border-radius: 12px;
     padding: 20px 40px;
+    display: flex;
+    justify-content: space-around;
+    width: 40rem;
+    margin-top: 15px;
 }
