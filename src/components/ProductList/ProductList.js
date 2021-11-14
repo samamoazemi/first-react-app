@@ -11,12 +11,24 @@ class ProductList extends React.Component {
           ],
         }
 
+        //state => Handler !
+
+    removeHandler = (id) => {
+            console.log("clicked", id)
+            const fiteredProducts = this.state.products.filter((p) => p.id !== id)
+            this.setState({ products: fiteredProducts })
+    
+        }
+
     render() { 
         return(
             <div>
             {this.state.products.map((product) => {
            return(
-            <Product name={product.title} price={product.price} key={product.id}  />
+            <Product name={product.title} 
+             price={product.price} 
+             key={product.id} 
+             onDelete={() => this.removeHandler(product.id)} />
            )
          })}
         </div>
