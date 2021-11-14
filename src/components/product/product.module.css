@@ -6,4 +6,28 @@
     justify-content: space-around;
     width: 40rem;
     margin-top: 15px;
+    color: #444;
+}
+.button{
+    color: #6D28D9;
+    background-color: #fff;
+    border: 1px solid #6D28D9;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 10px;
+}
+.inc{
+    background-color: #EDE9FE;
+}
+.value{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #EDE9FE;
+    color: #6D28D9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
