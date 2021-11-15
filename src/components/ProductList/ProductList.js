@@ -13,11 +13,24 @@ class ProductList extends React.Component {
 
         //state => Handler !
 
-    removeHandler = (id) => {
+        //1. id
+        //2. find selected item
+        //3. add one to item quantity
+        //4. setstate()
+
+        incrementHandler = (id) => {
+            const products = [...this.state.products];
+            const selectedItem = products.find((p) => p.id === id)
+            selectedItem.quantity++;
+            this.setState({products : products})
+            console.log(products)
+
+        }
+
+        removeHandler = (id) => {
             console.log("clicked", id)
             const fiteredProducts = this.state.products.filter((p) => p.id !== id)
             this.setState({ products: fiteredProducts })
-    
         }
 
     render() { 
@@ -31,6 +44,7 @@ class ProductList extends React.Component {
             //  quantity={product.quantity}
              product={product}
              key={product.id} 
+             onIncrement={ () => this.incrementHandler (product.id)}
              onDelete={() => this.removeHandler(product.id)} />
            )
          })}

@@ -8,7 +8,9 @@ const Product = (props) => {
           <p>product price : {props.product.price} </p>
           <span className={styles.value}>{props.product.quantity}</span>
           
-          <button className={`${styles.button} ${styles.inc}`}>increment</button>
+          <button
+           onClick={props.onIncrement} 
+           className={`${styles.button} ${styles.inc}`}>increment</button>
 
           <button onClick={props.onDelete} className={styles.button}>
                 Delete
