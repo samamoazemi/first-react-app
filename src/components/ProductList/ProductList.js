@@ -8,23 +8,17 @@ class ProductList extends React.Component {
            { title:"React.js", price:"99 $", id:1, quantity:1 },
            { title:"Node.js", price:"89 $", id:2, quantity:2 },
            { title:"JavaScript", price:"79 $", id:3, quantity:3 },
-          ],
+          ]
         }
 
         //state => Handler !
-
-        //1. id
-        //2. find selected item
-        //3. add one to item quantity
-        //4. setstate()
 
         incrementHandler = (id) => {
             const products = [...this.state.products];
             const selectedItem = products.find((p) => p.id === id)
             selectedItem.quantity++;
             this.setState({products : products})
-            console.log(products)
-
+            // console.log(products)
         }
 
         removeHandler = (id) => {
@@ -33,22 +27,35 @@ class ProductList extends React.Component {
             this.setState({ products: fiteredProducts })
         }
 
+        changeHandler = (event, id) => {
+            // console.log(event.target.value, id);
+            const products = [...this.state.products];
+            const selectedItem = products.find((p) => p.id == id)
+            selectedItem.title = event.target.value;
+            this.setState({products: products });
+
+        }
+
     render() { 
         return(
             <div>
             {this.state.products.map((product) => {
-           return(
-            <Product
-            //  name={product.title} 
-            //  price={product.price} 
-            //  quantity={product.quantity}
-             product={product}
-             key={product.id} 
-             onIncrement={ () => this.incrementHandler (product.id)}
-             onDelete={() => this.removeHandler(product.id)} />
-           )
-         })}
-        </div>
+                return(
+                    <Product
+                    //  name={product.title} 
+                    //  price={product.price} 
+                    //  quantity={product.quantity}
+                    product={product}
+                    key={product.id} 
+onIncrement={ () => this.incrementHandler (product.id)}
+                    onDelete={() => this.removeHandler(product.id)} 
+                    onChange={(e) => this.changeHandler(e, product.id)}
+                    />
+             
+             
+                )
+            })}
+                                </div>
         )
     }
 }
