@@ -1,4 +1,5 @@
 import styles from "./product.module.css";
+import { BsTrash } from "react-icons/bs";
 
 const Product = (props) => {
 
@@ -15,9 +16,9 @@ const Product = (props) => {
           value={props.product.title}
            />
 
-          <button 
-           onClick={props.onDecrement} 
-           className={styles.button}>-</button>
+          <button onClick={props.onDecrement} className={styles.button}>
+            {props.product.quantity > 1 ? "-" : <BsTrash/>}
+           </button>
 
           <button
            onClick={props.onIncrement} 
