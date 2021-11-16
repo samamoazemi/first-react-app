@@ -8,21 +8,24 @@ const Product = (props) => {
           <p>product price : {props.product.price} </p>
           <span className={styles.value}>{props.product.quantity}</span>
 
-          <input className={styles.input}
+          <input 
+          className={styles.input}
           type="text" 
           onChange={props.onChange}
           value={props.product.title}
            />
 
-          {/* about input : writting codes with this Syntax called contorol component */}
-          
+          <button 
+           onClick={props.onDecrement} 
+           className={styles.button}>-</button>
+
           <button
            onClick={props.onIncrement} 
-           className={`${styles.button} ${styles.inc}`}>increment</button>
+           className={`${styles.button} ${styles.inc}`}>+</button>
 
-          <button onClick={props.onDelete} className={styles.button}>
-                Delete
-             </button>
+          <button 
+           onClick={props.onDelete} 
+           className={styles.button}>Delete</button>
 
         </div>
     )

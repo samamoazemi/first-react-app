@@ -13,6 +13,27 @@ class ProductList extends React.Component {
 
         //state => Handler !
 
+        changeHandler = (event, id) => {
+            // console.log(event.target.value, id);
+            const products = [...this.state.products];
+            const selectedItem = products.find((p) => p.id == id)
+            selectedItem.title = event.target.value;
+            this.setState({products: products });
+        }
+
+        decrementHandler = (id) => {
+            const products = [...this.state.products];
+            const selectedItem = products.find((p) => p.id === id)
+            if(selectedItem.quantity === 1){
+              const filteredProducts = products.filter((p) => p.id !== id)
+              this.setState({ products : filteredProducts })
+            }
+            else{
+                selectedItem.quantity--;
+                this.setState({products : products})
+            }
+        }
+
         incrementHandler = (id) => {
             const products = [...this.state.products];
             const selectedItem = products.find((p) => p.id === id)
@@ -27,15 +48,6 @@ class ProductList extends React.Component {
             this.setState({ products: fiteredProducts })
         }
 
-        changeHandler = (event, id) => {
-            // console.log(event.target.value, id);
-            const products = [...this.state.products];
-            const selectedItem = products.find((p) => p.id == id)
-            selectedItem.title = event.target.value;
-            this.setState({products: products });
-
-        }
-
     render() { 
         return(
             <div>
@@ -47,15 +59,16 @@ class ProductList extends React.Component {
                     //  quantity={product.quantity}
                     product={product}
                     key={product.id} 
-onIncrement={ () => this.incrementHandler (product.id)}
+                    onIncrement={() => this.incrementHandler (product.id)}
                     onDelete={() => this.removeHandler(product.id)} 
                     onChange={(e) => this.changeHandler(e, product.id)}
+                    onDecrement={() => this.decrementHandler(product.id)}
                     />
              
              
                 )
             })}
-                                </div>
+            </div>
         )
     }
 }
