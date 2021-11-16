@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import Product from '../product/Product';
 
 class ProductList extends React.Component {
-
+  
       renderProduct = () => {
-          if(this.props.products.length === 0) 
+
+        const { products, onChange, onDecrement, onIncrement, onRemove } = this.props;
+
+          if(products.length === 0) 
           return <div>There is no product in your cart</div>
 
-          return this.props.products.map((product) => {
+          return products.map((product) => {
             return(
               <Product
                 //  name={product.title} 
@@ -15,19 +18,20 @@ class ProductList extends React.Component {
                 //  quantity={product.quantity}
                 product={product}
                 key={product.id} 
-                onIncrement={() => this.props.onIncrement(product.id)}
-                onDelete={() => this.props.onRemove(product.id)} 
-                onChange={(e) => this.props.onChange(e, product.id)}
-                onDecrement={() => this.props.onDecrement(product.id)}
+                onChange={(e) => onChange(e, product.id)}
+                onDecrement={() => onDecrement(product.id)}
+                onIncrement={() => onIncrement(product.id)}
+                onDelete={() => onRemove(product.id)} 
               />
            )
           })
       }
 
     render() { 
+      const { products } = this.props;
       return (
          <div>
-           {!this.props.products.length && <div>Go to shopping</div> }
+           {!products.length && <div>Go to shopping</div> }
            {this.renderProduct()}
          </div>
         )
