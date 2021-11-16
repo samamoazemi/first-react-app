@@ -10,13 +10,14 @@ const Product = (props) => {
           <span className={styles.value}>{props.product.quantity}</span>
 
           <input 
-          className={styles.input}
-          type="text" 
-          onChange={props.onChange}
-          value={props.product.title}
+           className={styles.input}
+           type="text" 
+           onChange={props.onChange}
+           value={props.product.title}
            />
 
-          <button onClick={props.onDecrement} className={styles.button}>
+          <button onClick={props.onDecrement} 
+            className={`${styles.button} ${props.product.quantity === 1 && styles.remove}`}>
             {props.product.quantity > 1 ? "-" : <BsTrash/>}
            </button>
 
