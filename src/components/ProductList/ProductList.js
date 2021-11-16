@@ -53,24 +53,29 @@ class ProductList extends React.Component {
             return <div>There is no product in your cart</div>
 
             return this.state.products.map((product) => {
-                return(
-                    <Product
-                    //  name={product.title} 
-                    //  price={product.price} 
-                    //  quantity={product.quantity}
-                    product={product}
-                    key={product.id} 
-                    onIncrement={() => this.incrementHandler (product.id)}
-                    onDelete={() => this.removeHandler(product.id)} 
-                    onChange={(e) => this.changeHandler(e, product.id)}
-                    onDecrement={() => this.decrementHandler(product.id)}
-                    />
-                )
+              return(
+                <Product
+                  //  name={product.title} 
+                  //  price={product.price} 
+                  //  quantity={product.quantity}
+                  product={product}
+                  key={product.id} 
+                  onIncrement={() => this.incrementHandler (product.id)}
+                  onDelete={() => this.removeHandler(product.id)} 
+                  onChange={(e) => this.changeHandler(e, product.id)}
+                  onDecrement={() => this.decrementHandler(product.id)}
+                />
+             )
             })
         }
 
     render() { 
-        return <div>{this.renderProduct()}</div>
+      return (
+         <div>
+           {!this.state.products.length && <div>Go to shopping</div> }
+           {this.renderProduct()}
+         </div>
+        )
     }
 }
  
