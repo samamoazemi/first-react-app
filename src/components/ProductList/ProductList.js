@@ -49,6 +49,10 @@ class ProductList extends React.Component {
         }
 
     render() { 
+
+        if(this.state.products.length === 0) 
+        return <div>There is no product in your cart</div>
+
         return(
             <div>
             {this.state.products.map((product) => {
