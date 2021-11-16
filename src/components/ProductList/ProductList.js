@@ -48,14 +48,11 @@ class ProductList extends React.Component {
             this.setState({ products: fiteredProducts })
         }
 
-    render() { 
+        renderProduct = () => {
+            if(this.state.products.length === 0) 
+            return <div>There is no product in your cart</div>
 
-        if(this.state.products.length === 0) 
-        return <div>There is no product in your cart</div>
-
-        return(
-            <div>
-            {this.state.products.map((product) => {
+            return this.state.products.map((product) => {
                 return(
                     <Product
                     //  name={product.title} 
@@ -68,12 +65,12 @@ class ProductList extends React.Component {
                     onChange={(e) => this.changeHandler(e, product.id)}
                     onDecrement={() => this.decrementHandler(product.id)}
                     />
-             
-             
                 )
-            })}
-            </div>
-        )
+            })
+        }
+
+    render() { 
+        return <div>{this.renderProduct()}</div>
     }
 }
  
