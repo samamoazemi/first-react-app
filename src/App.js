@@ -20,33 +20,47 @@ class App extends react.Component {
   }
     
   changeHandler = (event, id) => {
-    // console.log(event.target.value, id);
-    const products = [...this.state.products];
-    const selectedItem = products.find((p) => p.id == id)
-    selectedItem.title = event.target.value;
-    this.setState({products: products });
+    
+    const index = this.state.products.findIndex((item) => item.id === id)
+    console.log(index);
+    const product = {...this.state.products[index]}
+    product.title = event.target.value;
+    const products = [...this.state.products]
+    products[index] = product;
+    this.setState({ products });
 }
 
   decrementHandler = (id) => {
-      const products = [...this.state.products];
-      const selectedItem = products.find((p) => p.id === id)
-      if(selectedItem.quantity === 1){
-        const filteredProducts = products.filter((p) => p.id !== id)
-        this.setState({ products : filteredProducts })
-      }
-      else{
-          selectedItem.quantity--;
-          this.setState({products : products})
-      }
+      
+    const index = this.state.products.findIndex((item) => item.id === id)
+    const product = {...this.state.products[index]}
+    if(product.quantity === 1){
+      const filteredProducts = this.state.products.filter((p) => p.id !== id) 
+      this.setState({products: filteredProducts })
+    }
+    else{
+      const products = [...this.state.products]
+      product.quantity--;
+      products[index] = product;
+      this.setState({ products });
+
+    }
   }
 
   incrementHandler = (id) => {
-      const products = [...this.state.products];
-      const selectedItem = products.find((p) => p.id === id)
-      selectedItem.quantity++;
-      this.setState({products : products})
-      // console.log(products)
+    // 1.id
+    // 2.index
+    const index = this.state.products.findIndex((item) => item.id === id)
+    console.log(index);
+    // 3. clone the selected index and update the qty
+    const product = {...this.state.products[index]}
+    product.quantity++;
+    // 4. update products
+    const products = [...this.state.products]
+    products[index] = product;
+    this.setState({ products });
   }
+     
 
   removeHandler = (id) => {
       console.log("clicked", id)
@@ -58,8 +72,9 @@ class App extends react.Component {
     console.log("App.js componentDidMount");
   }
 
-  componentDidUpdate(prevProps, preState){
+  componentDidUpdate(prevProps, prevState){
     console.log("App.js componentDidUpdate");
+    console.log("App.js", prevState);
   }
 
   shouldComponentUpdate(nextProps, nextState){

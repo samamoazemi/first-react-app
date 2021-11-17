@@ -5,6 +5,9 @@ class ProductList extends React.Component {
 
   componentDidUpdate(prevProps, preState){
     console.log("ProductList.js componentDidUpdate");
+    if(prevProps.products !== this.props.products ){
+
+    }
   }
   
       renderProduct = () => {
