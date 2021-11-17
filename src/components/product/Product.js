@@ -3,6 +3,8 @@ import { BsTrash } from "react-icons/bs";
 
 const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
 
+  console.log("Product.js render");
+
     return(
         <div className={styles.product}>
           <p>product name : {product.title} course</p>

@@ -27,7 +27,10 @@ class ProductList extends React.Component {
           })
       }
 
-    render() { 
+    render() {
+      
+      console.log("ProductList.js render");
+
       const { products } = this.props;
       return (
          <div>
