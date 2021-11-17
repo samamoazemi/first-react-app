@@ -58,6 +58,16 @@ class App extends react.Component {
     console.log("App.js componentDidMount");
   }
 
+  componentDidUpdate(prevProps, preState){
+    console.log("App.js componentDidUpdate");
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    return true;
+  }
+  // if shouldComponentUpdate return false :  The component will not be updated after the change
+  // if shouldComponentUpdate return true : The component will be updated after the change
+
  
   render(){
 
