@@ -3,10 +3,10 @@ import Product from '../product/Product';
 
 class ProductList extends React.Component {
 
-  componentDidUpdate(prevProps, preState){
-    console.log("ProductList.js componentDidUpdate");
-    if(prevProps.products !== this.props.products ){}
-  }
+  // componentDidUpdate(prevProps, preState){
+  //   console.log("ProductList.js componentDidUpdate");
+  //   if(prevProps.products !== this.props.products ){}
+  // }
   
       renderProduct = () => {
 
@@ -34,7 +34,7 @@ class ProductList extends React.Component {
 
     render() {
       
-      console.log("ProductList.js render");
+      //console.log("ProductList.js render");
 
       const { products } = this.props;
       return (

@@ -1,84 +1,53 @@
 import styles from "./product.module.css";
 import { BsTrash } from "react-icons/bs";
-import React from "react";
+import React, { useEffect } from "react";
 
-class Product extends React.Component {
+const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
 
- componentWillUnmount(){
-   console.log("ProductList.js componentWillUnmount");
- }
+  console.log("Product.js render");
 
-  render() { 
-    console.log("Product render")
+  // CDM + CDU + CWUM => useEffect()
+  // CDM =>  useEffect( () => {} )
+  // CDU =>  useEffect( () => {} , [name])
+  // CWUM =>  useEffect( () => { return () =>{} } , [])
+
+  useEffect(() => {
+    console.log("Product.js useEffect");
+    return () => {
+      console.log("Product CWUM")
+    }
+  }, []);
+
     return(
-      <div className={styles.product}>
-          <p>product name : {this.props.product.title} course</p>
-          <p>product price : {this.props.product.price} </p>
-          <span className={styles.value}>{this.props.product.quantity}</span>
+        <div className={styles.product}>
+          <p>product name : {product.title} course</p>
+          <p>product price : {product.price} </p>
+          <span className={styles.value}>{product.quantity}</span>
 
           <input 
            className={styles.input}
            type="text" 
-           onChange={this.props.onChange}
-           value={this.props.product.title}
+           onChange={onChange}
+           value={product.title}
            />
 
-          <button
-            onClick={this.props.onDecrement} 
-            className={`${styles.button} ${
-              this.props.product.quantity === 1 && styles.remove}`}>
-            {this.props.product.quantity > 1 ? "-" : <BsTrash/>}
+          <button onClick={onDecrement} 
+            className={`${styles.button} ${product.quantity === 1 && styles.remove}`}>
+            {product.quantity > 1 ? "-" : <BsTrash/>}
            </button>
 
           <button
-           onClick={this.props.onIncrement} 
+           onClick={onIncrement} 
            className={`${styles.button} ${styles.inc}`}>+</button>
 
           <button 
-           onClick={this.props.onDelete} 
+           onClick={onDelete} 
            className={styles.button}>Delete</button>
 
         </div>
-    );
-  }
+    )
 }
  
 export default Product;
 
 
-
-// const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
-
-//   console.log("Product.js render");
-
-//     return(
-//         <div className={styles.product}>
-//           <p>product name : {product.title} course</p>
-//           <p>product price : {product.price} </p>
-//           <span className={styles.value}>{product.quantity}</span>
-
-//           <input 
-//            className={styles.input}
-//            type="text" 
-//            onChange={onChange}
-//            value={product.title}
-//            />
-
-//           <button onClick={onDecrement} 
-//             className={`${styles.button} ${product.quantity === 1 && styles.remove}`}>
-//             {product.quantity > 1 ? "-" : <BsTrash/>}
-//            </button>
-
-//           <button
-//            onClick={onIncrement} 
-//            className={`${styles.button} ${styles.inc}`}>+</button>
-
-//           <button 
-//            onClick={onDelete} 
-//            className={styles.button}>Delete</button>
-
-//         </div>
-//     )
-// }
- 
-// export default Product;

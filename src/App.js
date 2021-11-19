@@ -69,24 +69,24 @@ class App extends react.Component {
   }
 
   componentDidMount(){
-    console.log("App.js componentDidMount");
+    //console.log("App.js componentDidMount");
   }
 
-  componentDidUpdate(prevProps, prevState){
-    console.log("App.js componentDidUpdate");
-    console.log("App.js", prevState);
-  }
+  // // componentDidUpdate(prevProps, prevState){
+  // //   console.log("App.js componentDidUpdate");
+  // //   console.log("App.js", prevState);
+  // // }
 
-  shouldComponentUpdate(nextProps, nextState){
-    return true;
-  }
+  // // shouldComponentUpdate(nextProps, nextState){
+  // //   return true;
+  // }
   // if shouldComponentUpdate return false :  The component will not be updated after the change
   // if shouldComponentUpdate return true : The component will be updated after the change
 
  
   render(){
 
-    console.log("App.js render");
+    //console.log("App.js render");
 
     return(
       <div className="container" id="title">
