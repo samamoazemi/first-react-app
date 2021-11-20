@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import ClassCounter from "./components/ClassCounter";
 import FunctionalCounter from "./components/FunctionalCounter";
+import ClassTimer from "./components/ClassTimer";
+import FunctionalTimer from "./components/FunctionalTimer";
 
 class App extends react.Component {
 
@@ -17,7 +19,9 @@ class App extends react.Component {
       { title:"React.js", price:"99 $", id:1, quantity:1 },
       { title:"Node.js", price:"89 $", id:2, quantity:2 },
       { title:"JavaScript", price:"79 $", id:3, quantity:3 },
-     ]
+     ],
+     
+     isShow : true
   }
     
   changeHandler = (event, id) => {
@@ -72,8 +76,13 @@ class App extends react.Component {
 
     return(
       <div className="container" id="title">
+        <button onClick={() => this.setState({isShow : !this.state.isShow})} >
+          {this.state.isShow ? "hide" : "show"}
+          </button>
+            {this.state.isShow  && <FunctionalTimer/>} 
+        {/* {this.state.isShow  && <ClassTimer/>} */}
         {/* <ClassCounter/> */}
-        <FunctionalCounter/>
+        {/* <FunctionalCounter/> */}
          {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
