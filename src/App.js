@@ -2,7 +2,8 @@ import react  from "react";
 import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-
+import ClassCounter from "./components/ClassCounter";
+import FunctionalCounter from "./components/FunctionalCounter";
 
 class App extends react.Component {
 
@@ -28,7 +29,7 @@ class App extends react.Component {
     const products = [...this.state.products]
     products[index] = product;
     this.setState({ products });
-}
+  }
 
   decrementHandler = (id) => {
       
@@ -60,43 +61,26 @@ class App extends react.Component {
     products[index] = product;
     this.setState({ products });
   }
-     
 
   removeHandler = (id) => {
       console.log("clicked", id)
       const fiteredProducts = this.state.products.filter((p) => p.id !== id)
       this.setState({ products: fiteredProducts })
   }
-
-  componentDidMount(){
-    //console.log("App.js componentDidMount");
-  }
-
-  // // componentDidUpdate(prevProps, prevState){
-  // //   console.log("App.js componentDidUpdate");
-  // //   console.log("App.js", prevState);
-  // // }
-
-  // // shouldComponentUpdate(nextProps, nextState){
-  // //   return true;
-  // }
-  // if shouldComponentUpdate return false :  The component will not be updated after the change
-  // if shouldComponentUpdate return true : The component will be updated after the change
-
- 
+  
   render(){
-
-    //console.log("App.js render");
 
     return(
       <div className="container" id="title">
-         <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
+        {/* <ClassCounter/> */}
+        <FunctionalCounter/>
+         {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
           onChange={this.changeHandler}
           onDecrement={this.decrementHandler}
           onIncrement={this.incrementHandler}
-          onRemove={this.removeHandler}/>
+          onRemove={this.removeHandler}/> */}
        </div>
     )
   }
