@@ -2,10 +2,7 @@ import react  from "react";
 import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
-import ClassCounter from "./components/ClassCounter";
-import FunctionalCounter from "./components/FunctionalCounter";
-import ClassTimer from "./components/ClassTimer";
-import FunctionalTimer from "./components/FunctionalTimer";
+import Wrapper from "./components/HOC/Wrapper";
 
 class App extends react.Component {
 
@@ -19,9 +16,7 @@ class App extends react.Component {
       { title:"React.js", price:"99 $", id:1, quantity:1 },
       { title:"Node.js", price:"89 $", id:2, quantity:2 },
       { title:"JavaScript", price:"79 $", id:3, quantity:3 },
-     ],
-     
-     isShow : true
+     ]
   }
     
   changeHandler = (event, id) => {
@@ -75,22 +70,16 @@ class App extends react.Component {
   render(){
 
     return(
-      <div className="container" id="title">
-        <button onClick={() => this.setState({isShow : !this.state.isShow})} >
-          {this.state.isShow ? "hide" : "show"}
-          </button>
-            {this.state.isShow  && <FunctionalTimer/>} 
-        {/* {this.state.isShow  && <ClassTimer/>} */}
-        {/* <ClassCounter/> */}
-        {/* <FunctionalCounter/> */}
-         {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
+      <Wrapper class="container">
+         <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
           onChange={this.changeHandler}
           onDecrement={this.decrementHandler}
           onIncrement={this.incrementHandler}
-          onRemove={this.removeHandler}/> */}
-       </div>
+          onRemove={this.removeHandler}
+          />
+      </Wrapper>
     )
   }
 }
