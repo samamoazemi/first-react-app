@@ -3,6 +3,8 @@ import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
+import ClickCounter from "./components/HocExample/ClickCounter";
+import HoverCounter from "./components/HocExample/HoverCounter";;
 
 class App extends react.Component {
 
@@ -63,18 +65,19 @@ class App extends react.Component {
   }
   
   render(){
-    console.log(this.props)
 
     return(
       <>
-         <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
+      <ClickCounter name="sama" />
+      <HoverCounter />
+         {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
           onChange={this.changeHandler}
           onDecrement={this.decrementHandler}
           onIncrement={this.incrementHandler}
           onRemove={this.removeHandler}
-          />
+          /> */}
       </>
     )
   }
