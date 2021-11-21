@@ -6,11 +6,6 @@ import Wrapper from "./components/HOC/Wrapper";
 
 class App extends react.Component {
 
-  constructor(props){
-    super(props)
-    console.log("App.js constructor");
-  }
-
   state={
     products: [
       { title:"React.js", price:"99 $", id:1, quantity:1 },
@@ -68,9 +63,10 @@ class App extends react.Component {
   }
   
   render(){
+    console.log(this.props)
 
     return(
-      <Wrapper class="container">
+      <>
          <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
@@ -79,8 +75,8 @@ class App extends react.Component {
           onIncrement={this.incrementHandler}
           onRemove={this.removeHandler}
           />
-      </Wrapper>
+      </>
     )
   }
 }
-export default App;
+export default Wrapper(App, "container");

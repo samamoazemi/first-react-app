@@ -6,4 +6,4 @@ import "./index.css";
 
 
 
-ReactDom.render(<App/ >, document.getElementById("root"));
+ReactDom.render(<App name="sama"/>, document.getElementById("root"));
