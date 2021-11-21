@@ -4,7 +4,10 @@ import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
 import ClickCounter from "./components/HocExample/ClickCounter";
-import HoverCounter from "./components/HocExample/HoverCounter";;
+import HoverCounter from "./components/HocExample/HoverCounter";
+import ParentComp from "./components/PureMemoComp/ParentComp";
+
+;
 
 class App extends react.Component {
 
@@ -68,8 +71,9 @@ class App extends react.Component {
 
     return(
       <>
-      <ClickCounter name="sama" />
-      <HoverCounter />
+         <ParentComp/>
+         {/* <ClickCounter name="sama" />
+         <HoverCounter /> */}
          {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
