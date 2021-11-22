@@ -6,6 +6,7 @@ import Wrapper from "./components/HOC/Wrapper";
 import ClickCounter from "./components/HocExample/ClickCounter";
 import HoverCounter from "./components/HocExample/HoverCounter";
 import ParentComp from "./components/PureMemoComp/ParentComp";
+import ClassRef from "./components/Ref/ClassRef";
 
 ;
 
@@ -71,9 +72,7 @@ class App extends react.Component {
 
     return(
       <>
-         <ParentComp/>
-         {/* <ClickCounter name="sama" />
-         <HoverCounter /> */}
+          <ClassRef/>
          {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
