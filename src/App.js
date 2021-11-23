@@ -7,6 +7,7 @@ import ClickCounter from "./components/HocExample/ClickCounter";
 import HoverCounter from "./components/HocExample/HoverCounter";
 import ParentComp from "./components/PureMemoComp/ParentComp";
 import ClassRef from "./components/Ref/ClassRef";
+import FunctionalRef from "./components/Ref/FunctionalRef";
 
 ;
 
@@ -72,7 +73,8 @@ class App extends react.Component {
 
     return(
       <>
-          <ClassRef/>
+         <FunctionalRef/>
+         {/* <ClassRef/> */}
          {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
