@@ -1,4 +1,4 @@
-import react  from "react";
+import react, { useRef }  from "react";
 import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
@@ -8,6 +8,7 @@ import HoverCounter from "./components/HocExample/HoverCounter";
 import ParentComp from "./components/PureMemoComp/ParentComp";
 import ClassRef from "./components/Ref/ClassRef";
 import FunctionalRef from "./components/Ref/FunctionalRef";
+import UseRef from "./components/Ref/UseRef";
 
 ;
 
@@ -73,7 +74,8 @@ class App extends react.Component {
 
     return(
       <>
-         <FunctionalRef/>
+         <UseRef/>
+         {/* <FunctionalRef/> */}
          {/* <ClassRef/> */}
          {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
