@@ -60,14 +60,7 @@ class App extends react.Component {
       this.setState({ products: fiteredProducts })
   }
 
-  // useContext =>
-  // 1. create context
-  // 2. export context
-  // 3. provider
-  // 4. useContext => consume !
-
-
-  
+ 
   render(){
 
     return(

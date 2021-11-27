@@ -3,12 +3,21 @@ import {useCount, useCountActions } from "./CounterProvider";
 const CountrOne = () => {
 
     const count = useCount()
-    const setCount = useCountActions()
+    const {addOne, addFive, decrement} = useCountActions()
     
+    // const addOne = () => {
+    //     setCount((prevCount) => prevCount + 1)
+    // }
+    // const addFive = () => {
+    //     setCount((prevCount) => prevCount + 5)
+    // }
+
     return(
         <div>
             <h2> count is : {count} </h2>
-            <button onClick={() => setCount( count + 1 )}>Add one</button>
+            <button onClick={addOne}>add one</button>
+            <button onClick={addFive}>add five</button>
+            <button onClick={decrement}>decrement</button>
         </div>
     )
 }
