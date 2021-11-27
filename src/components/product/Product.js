@@ -12,10 +12,6 @@ const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
     }
   }, []);
 
-   const user = useContext(UserContext)
-   const website = useContext(WebsiteContext)
-   console.log(user, website)
-
     return(
         <div className={styles.product}>
           <p>product name : {product.title} course</p>

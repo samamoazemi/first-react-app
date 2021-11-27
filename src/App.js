@@ -3,9 +3,8 @@ import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
-
-export const UserContext = react.createContext()
-export const WebsiteContext = react.createContext()
+import CounterProvider from "./components/Context/CounterProvider";
+import CountrOne from "./components/Context/CounterOne";
 
 class App extends react.Component {
 
@@ -73,18 +72,17 @@ class App extends react.Component {
 
     return(
       <>
-      <WebsiteContext.Provider value={"FrontHook.ir"}>
-      <UserContext.Provider value={"sama"}>
-         <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
+      <CounterProvider>
+        <p>Welcome to context</p>
+        <CountrOne/>
+      </CounterProvider>
+       {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
           onChange={this.changeHandler}
           onDecrement={this.decrementHandler}
           onIncrement={this.incrementHandler}
-          onRemove={this.removeHandler}
-          />
-      </UserContext.Provider>
-      </WebsiteContext.Provider>
+          onRemove={this.removeHandler} */}
       </>
     )
   }
