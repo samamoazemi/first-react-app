@@ -1,16 +1,11 @@
-import react, { useRef }  from "react";
+import react  from "react";
 import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
-import ClickCounter from "./components/HocExample/ClickCounter";
-import HoverCounter from "./components/HocExample/HoverCounter";
-import ParentComp from "./components/PureMemoComp/ParentComp";
-import ClassRef from "./components/Ref/ClassRef";
-import FunctionalRef from "./components/Ref/FunctionalRef";
-import UseRef from "./components/Ref/UseRef";
 
-;
+export const UserContext = react.createContext()
+export const WebsiteContext = react.createContext()
 
 class App extends react.Component {
 
@@ -51,40 +46,45 @@ class App extends react.Component {
   }
 
   incrementHandler = (id) => {
-    // 1.id
-    // 2.index
     const index = this.state.products.findIndex((item) => item.id === id)
-    console.log(index);
-    // 3. clone the selected index and update the qty
+    // console.log(index);
     const product = {...this.state.products[index]}
     product.quantity++;
-    // 4. update products
     const products = [...this.state.products]
     products[index] = product;
     this.setState({ products });
   }
 
   removeHandler = (id) => {
-      console.log("clicked", id)
+      // console.log("clicked", id)
       const fiteredProducts = this.state.products.filter((p) => p.id !== id)
       this.setState({ products: fiteredProducts })
   }
+
+  // useContext =>
+  // 1. create context
+  // 2. export context
+  // 3. provider
+  // 4. useContext => consume !
+
+
   
   render(){
 
     return(
       <>
-         <UseRef/>
-         {/* <FunctionalRef/> */}
-         {/* <ClassRef/> */}
-         {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
+      <WebsiteContext.Provider value={"FrontHook.ir"}>
+      <UserContext.Provider value={"sama"}>
+         <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
           products={this.state.products} 
           onChange={this.changeHandler}
           onDecrement={this.decrementHandler}
           onIncrement={this.incrementHandler}
           onRemove={this.removeHandler}
-          /> */}
+          />
+      </UserContext.Provider>
+      </WebsiteContext.Provider>
       </>
     )
   }

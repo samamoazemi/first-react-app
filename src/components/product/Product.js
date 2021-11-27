@@ -1,22 +1,20 @@
 import styles from "./product.module.css";
 import { BsTrash } from "react-icons/bs";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { UserContext, WebsiteContext } from "../../App";
 
 const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
 
-  console.log("Product.js render");
-
-  // CDM + CDU + CWUM => useEffect()
-  // CDM =>  useEffect( () => {} )
-  // CDU =>  useEffect( () => {} , [name])
-  // CWUM =>  useEffect( () => { return () =>{} } , [])
-
   useEffect(() => {
-    console.log("Product.js useEffect");
+   
     return () => {
-      console.log("Product CWUM")
+      
     }
   }, []);
+
+   const user = useContext(UserContext)
+   const website = useContext(WebsiteContext)
+   console.log(user, website)
 
     return(
         <div className={styles.product}>
@@ -47,6 +45,8 @@ const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
         </div>
     )
 }
+
+
  
 export default Product;
 
