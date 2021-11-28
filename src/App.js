@@ -69,9 +69,9 @@ class App extends react.Component {
       <>
       <CounterProvider>
         <p>Welcome to context</p>
-        <CountReducerTwo />
+        {/* <CountReducerTwo /> */}
         {/* <CountReducer/> */}
-        {/* <CountrOne/> */}
+        <CountrOne/>
       </CounterProvider>
        {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
          <ProductList 
