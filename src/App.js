@@ -6,6 +6,7 @@ import Wrapper from "./components/HOC/Wrapper";
 import CounterProvider from "./components/Context/CounterProvider";
 import CountrOne from "./components/Context/CounterOne";
 import CountReducer from "./components/Reducer/CountReducer"
+import CountReducerTwo from "./components/Reducer/CountReducerTwo"
 
 class App extends react.Component {
 
@@ -68,7 +69,8 @@ class App extends react.Component {
       <>
       <CounterProvider>
         <p>Welcome to context</p>
-        <CountReducer/>
+        <CountReducerTwo />
+        {/* <CountReducer/> */}
         {/* <CountrOne/> */}
       </CounterProvider>
        {/* <NavBar totalItems={this.state.products.filter((p) => p.quantity > 0).length}/>
