@@ -6,7 +6,7 @@ const ProductList = (props) => {
 
   const products = useProducts();
 
-  const  {changeHandler, decrementHandler, incrementHandler, removeHandler} = useProductsActions();
+  const dispatch = useProductsActions();
   
   const renderProduct = () => {
 
@@ -17,10 +17,10 @@ const ProductList = (props) => {
           <Product
             product={product}
             key={product.id} 
-            onChange={(e) => changeHandler(e, product.id)}
-            onDecrement={() => decrementHandler(product.id)}
-            onIncrement={() => incrementHandler(product.id)}
-            onDelete={() => removeHandler(product.id)} 
+            onChange={(e) =>dispatch({type:"edit", id : product.id, event : e})}
+            onDecrement={() => dispatch({type:"decrement", id : product.id})}
+            onIncrement={() =>dispatch({type:"increment", id : product.id})}
+            onDelete={() =>dispatch({type:"remove", id : product.id})} 
           />
         )
       })
