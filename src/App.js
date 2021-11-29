@@ -3,17 +3,13 @@ import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
+import ProductsProvider, { useProducts, useProductsActions } from "./components/Providers/ProductsProvider";
 
 
 const App = () => {
 
-const[products, setProducts] = useState(
-  [
-    { title:"React.js", price:"99 $", id:1, quantity:1 },
-    { title:"Node.js", price:"89 $", id:2, quantity:2 },
-    { title:"JavaScript", price:"79 $", id:3, quantity:3 },
-  ]
-)
+  const products = useProducts(); 
+  const setProducts = useProductsActions();
 
 const changeHandler = (event, id) => {
     
@@ -60,13 +56,16 @@ const removeHandler = (id) => {
 
   return(
     <>
-         <NavBar totalItems={products.filter((p) => p.quantity > 0).length}/>
-         <ProductList 
-          products={products} 
-          onChange={changeHandler}
-          onDecrement={decrementHandler}
-          onIncrement={incrementHandler}
-          onRemove={removeHandler}/>
+        <ProductsProvider>
+           <NavBar/>
+           <ProductList 
+           products={products} 
+           onChange={changeHandler}
+           onDecrement={decrementHandler}
+           onIncrement={incrementHandler}
+           onRemove={removeHandler}
+           />
+        </ProductsProvider>
     </>
   )
 }

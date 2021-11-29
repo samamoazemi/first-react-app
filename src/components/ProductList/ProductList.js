@@ -1,49 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Product from '../product/Product';
+import { useProducts } from '../Providers/ProductsProvider';
 
-class ProductList extends React.Component {
+const ProductList = (props) => {
 
-  // componentDidUpdate(prevProps, preState){
-  //   console.log("ProductList.js componentDidUpdate");
-  //   if(prevProps.products !== this.props.products ){}
-  // }
+  const products = useProducts();
+
+  const { onChange, onDecrement, onIncrement, onRemove } = props;
   
-      renderProduct = () => {
+  const renderProduct = () => {
+    
+      if(products.length === 0) return <div>There is no product in your cart</div>
 
-        const { products, onChange, onDecrement, onIncrement, onRemove } = this.props;
-
-          if(products.length === 0) 
-          return <div>There is no product in your cart</div>
-
-          return products.map((product) => {
-            return(
-              <Product
-                //  name={product.title} 
-                //  price={product.price} 
-                //  quantity={product.quantity}
-                product={product}
-                key={product.id} 
-                onChange={(e) => onChange(e, product.id)}
-                onDecrement={() => onDecrement(product.id)}
-                onIncrement={() => onIncrement(product.id)}
-                onDelete={() => onRemove(product.id)} 
-              />
-           )
-          })
-      }
-
-    render() {
-      
-      //console.log("ProductList.js render");
-
-      const { products } = this.props;
-      return (
-         <div>
-           {!products.length && <div>Go to shopping</div> }
-           {this.renderProduct()}
-         </div>
+      return products.map((product) => {
+        return(
+          <Product
+            product={product}
+            key={product.id} 
+            onChange={(e) => onChange(e, product.id)}
+            onDecrement={() => onDecrement(product.id)}
+            onIncrement={() => onIncrement(product.id)}
+            onDelete={() => onRemove(product.id)} 
+          />
         )
+      })
     }
+     return (
+        <div>
+         {!products.length && <div>Go to shopping</div> }
+         {renderProduct()}
+        </div>
+      )
 }
  
 export default ProductList;
