@@ -23,4 +23,52 @@ export default ProductsProvider;
 
 export const useProducts = () => useContext(ProductContext)
 
-export const useProductsActions = () => useContext(ProductContextDispatcher)
+export const useProductsActions = () => {
+   const setProducts = useContext(ProductContextDispatcher)
+   const products = useContext(ProductContext)
+
+   const changeHandler = (event, id) => {
+    
+    const index = products.findIndex((item) => item.id === id)
+    console.log(index);
+    const product = {...products[index]}
+    product.title = event.target.value;
+    const updatedProducts = [...products]
+    updatedProducts[index] = product;
+    setProducts(updatedProducts);
+  }
+  
+  const decrementHandler = (id) => {
+      
+    const index = products.findIndex((item) => item.id === id)
+    const product = {...products[index]}
+    if(product.quantity === 1){
+      const filteredProducts = products.filter((p) => p.id !== id) 
+      setProducts(filteredProducts)
+    }
+    else{
+      const updatedProducts = [...products]
+      product.quantity--;
+      updatedProducts[index] = product;
+      setProducts(updatedProducts);
+    }
+  }
+  
+  const incrementHandler = (id) => {
+    const index = products.findIndex((item) => item.id === id)
+    // console.log(index);
+    const product = {...products[index]}
+    product.quantity++;
+    const updatedProducts = [...products]
+    updatedProducts[index] = product;
+    setProducts(updatedProducts);
+  }
+  
+  const removeHandler = (id) => {
+      // console.log("clicked", id)
+      const fiteredProducts = products.filter((p) => p.id !== id)
+      setProducts(fiteredProducts)
+  }
+
+return {changeHandler, decrementHandler, incrementHandler, removeHandler}
+}

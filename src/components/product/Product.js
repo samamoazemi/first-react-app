@@ -5,13 +5,6 @@ import { UserContext, WebsiteContext } from "../../App";
 
 const Product = ({ product, onChange, onDecrement, onIncrement, onDelete }) => {
 
-  useEffect(() => {
-   
-    return () => {
-      
-    }
-  }, []);
-
     return(
         <div className={styles.product}>
           <p>product name : {product.title} course</p>
