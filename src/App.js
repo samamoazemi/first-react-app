@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
+import Filter from "./components/Filter/Filter";
 import ProductsProvider from "./components/Providers/ProductsProvider";
 
 
@@ -12,6 +13,7 @@ const App = () => {
     <>
         <ProductsProvider>
            <NavBar />
+           <Filter />
            <ProductList />
         </ProductsProvider>
     </>
