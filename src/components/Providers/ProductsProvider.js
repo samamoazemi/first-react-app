@@ -53,8 +53,15 @@ const reducer = (state, action) => {
     }
 
     case "filter" :{
-        console.log(action.event.target.value);
-        return state;
+     if(action.event.target.value === ""){
+       return productData;
+     }
+     else{
+      // console.log(action.event.target.value);
+      const updatedProducts = productData.filter(
+        (p) => p.availableSizes.indexOf(action.event.target.value) >=0)
+      return updatedProducts;
+     }
     }
        
     default :
