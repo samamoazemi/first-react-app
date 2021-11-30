@@ -51,6 +51,11 @@ const reducer = (state, action) => {
         const fiteredProducts = state.filter((p) => p.id !== action.id)
         return fiteredProducts;
     }
+
+    case "filter" :{
+        console.log(action.event.target.value);
+        return state;
+    }
        
     default :
       return state;
