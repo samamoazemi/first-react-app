@@ -25,14 +25,12 @@ const Filter = () => {
     const[sort, setSort] = useState();
 
     const changeHandler = (selectedOption) => {
-        console.log(selectedOption)
         dispatch({ type: "filter", selectedOption })
         dispatch({ type: "sort", selectedOption : sort })
         setValue(selectedOption);
     }
 
     const sortHandler = (selectedOption) => {
-        console.log(selectedOption)
         dispatch({ type: "sort", selectedOption })
         setSort(selectedOption);
     }
