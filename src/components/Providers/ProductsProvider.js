@@ -64,6 +64,36 @@ const reducer = (state, action) => {
       return updatedProducts;
      }
     }
+
+    case "sort" :{
+      const value = action.selectedOption.value;
+      const products = [...state];
+      if (value === "lowest"){
+        const sorttedProducts = products.sort((a,b) => {
+
+          if (a.price > b.price){
+            return 1;
+          }
+          if (a.price < b.price){
+            return -1;
+          }
+          return 0;
+        })
+        return sorttedProducts;
+      }else{
+        const sorttedProducts = products.sort((a,b) => {
+
+          if (a.price < b.price){
+            return 1;
+          }
+          if (a.price > b.price){
+            return -1;
+          }
+          return 0;
+        })
+        return sorttedProducts;
+      }
+    }
        
     default :
       return state;
