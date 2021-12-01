@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from "react";
-import {productData} from "../../components/DB/Products";
+import {productData} from "../../DB/Products";
 import _ from "lodash";
 
 const ProductContext = React.createContext()   // state

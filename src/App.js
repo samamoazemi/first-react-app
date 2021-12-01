@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Wrapper from "./components/HOC/Wrapper";
 import Filter from "./components/Filter/Filter";
 import ProductsProvider from "./components/Providers/ProductsProvider";
+import SearchBar from "./common/Search/Search";
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <>
         <ProductsProvider>
            <NavBar />
+           <SearchBar />
            <Filter />
            <ProductList />
         </ProductsProvider>
