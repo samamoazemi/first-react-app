@@ -71,7 +71,8 @@ const reducer = (state, action) => {
       const products = [...state];
       if (value === "lowest"){
         return _.orderBy(products, ["price"], ["asc"]); 
-      }else{
+      }
+      else{
         return _.orderBy(products, ["price"], ["desc"]);
       }
     }
