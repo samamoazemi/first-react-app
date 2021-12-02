@@ -3,8 +3,9 @@ import { useProductsActions } from "../Providers/ProductsProvider";
 import Select from "react-select";
 import styles from "../Filter/filter.module.css";
 import SelectComponent from "../../common/Select/Select";
+import SearchBar from "../../common/Search/Search";
 
-const options = [
+const filterOptions = [
     { value: '', label: 'All' },
     { value: 'XS', label: 'XS' },
     { value: 'S', label: 'S' },
@@ -22,13 +23,13 @@ const sortOptions = [
 const Filter = () => {
 
     const dispatch = useProductsActions();
-    const[value, setValue] = useState("");
+    const[filter, setFilter] = useState("");
     const[sort, setSort] = useState("");
 
-    const changeHandler = (selectedOption) => {
+    const filterHandler = (selectedOption) => {
         dispatch({ type: "filter", selectedOption })
         dispatch({ type: "sort", selectedOption : sort })
-        setValue(selectedOption);
+        setFilter(selectedOption);
     }
 
     const sortHandler = (selectedOption) => {
@@ -37,23 +38,25 @@ const Filter = () => {
     }
 
     return(
-        <div className={styles.filter}>
-            <p>filter products based on :</p>
-            {/* <div className={styles.selectContainer}></div> */}
-            <SelectComponent 
-             title="filter by size"
-             value={value}
-             onChange={changeHandler}
-             options={options}
-            />
-            <SelectComponent 
-             title="sort by price"
-             value={sort}
-             onChange={sortHandler}
-             options={sortOptions}
-            />
-        </div>
-    )
+        <section>
+            <SearchBar filter={filter} />
+            <div className={styles.filter}>
+              <p>filter products based on :</p>
+              <SelectComponent 
+                title="filter by size"
+                value={filter}
+                onChange={filterHandler}
+                options={filterOptions}
+              />
+              <SelectComponent 
+                title="sort by price"
+                value={sort}
+                onChange={sortHandler}
+                options={sortOptions}
+              />
+            </div>
+        </section>
+    ) 
 }
  
 export default Filter;
